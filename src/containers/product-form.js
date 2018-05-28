@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { addProduct,updateProduct } from "../actions/index";
 import { bindActionCreators } from "redux";
 import { Button, Form, TextArea, Header } from 'semantic-ui-react';
+import _ from 'lodash';
 
 class ProductForm extends Component {
   constructor(props){
@@ -73,7 +74,7 @@ class ProductForm extends Component {
       image_base64: this.state.image_base64
     }
     
-    const index = products.findIndex(product => product.name === this.state.update_name)
+    const index = _.findIndex(products, product => product.name === this.state.update_name)
     products[index] = productToUpdate;
     // productArray.push(object);
     this.props.updateProduct(products)
